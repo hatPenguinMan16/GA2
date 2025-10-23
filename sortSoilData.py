@@ -57,17 +57,32 @@ def swe_soil_type_to_eng_soil_type(data_list):
 
 
 def convert_data_to_numeric(soil_type_data_json):
-    # soil_type_data_json 2D list with soil types as the rows and the numerical values for that soil type as the columns
-    for section in soil_type_data_json:
-
-        # return = [soil Suction Head(ssh), Hydraulic Conductivity, Porosity]
-        match section:
-            case "clay":
-                soil_type_data_json[section].append([2,5,6])
-                break
-
-
-    return soil_type_data_json
+    for soil_texture in soil_type_data_json:
+        match soil_texture:
+            case "Clay":
+                return [316.3, 0.3, 0.27]
+            case "Silty Clay":
+                return [292.2, 0.5, 0.29]
+            case "Sandy Clay":
+                return [239.0, 0.6, 0.22]
+            case "Clay Loam":
+                return [208.8, 1.0, 0.21]
+            case "Silty Clay Loam":
+                return [273.0, 1.0, 0.30]
+            case "Sandy Clay Loam":
+                return [218.5, 1.5, 0.02]
+            case "Silt Loam":
+                return [166.8, 3.4, 0.34]
+            case "Loam":
+                return [88.9, 7.6, 0.30]
+            case "Sandy Loam":
+                return [110.1, 10.9, 0.29]
+            case "Loamy Sand":
+                return [61.3, 29.9, 0.28]
+            case "Sand":
+                return [49.5, 117.8, 0.29]
+            case _:
+                return None
 
 
 test_list = [["clay"],["clay"],["clay"]]
