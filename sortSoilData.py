@@ -8,9 +8,52 @@ def openJson():
 def swe_soil_type_to_eng_soil_type(data_list):
     for item in range(len(data_list)):
         match data_list[item]:
-            case"Torv":
-                data_list[]
+            case "moran med lag halt av finkornigt material" \
+            "svallad moran" \
+            "mycket stenig och blockig moran" \
+            "vittringsjord":
+                return "sandy loam"
 
+            case "lera-silt, tidvis under vatten" \
+            "svamsediment, ler-silt":
+                return "silty clay loam"
+
+            case "svamsediment" \
+            "moran omvaxlande med sorterade sediment" \
+            "osorterat material, grovt-fint" \
+            "osorterat material, ospecificerat":
+                return "varierande"
+
+            case "gyttja":
+                return "silty clay"
+
+            case "svamsediment, grovsilt-finsand":
+                return "silt loam"
+
+            case "svamsediment, sand":
+                return "sand"
+
+            case "moran, ospecificerad":
+                return "loam"
+
+            case "moran med hog halt av finkornigt material":
+                return "clay loam"
+
+            case "torv" \
+            "mossetorv" \
+            "karrtorv" \
+            "bleke och kalkgyttja" \
+            "kalktuff" \
+            "torv, tidvis under vatten" \
+            "oklassat omrade, tidvis under vatten" \
+            "flytjord eller skredjord" \
+            "slamstromssediment, ler-block" \
+            "talus" \
+            "isälvssediment, sten-block" \
+            "kalfjall" \
+            "kulturlager" \
+            "utfyllnad":
+                return None
 
 
 def convert_data_to_numeric(soil_type_data_json):
